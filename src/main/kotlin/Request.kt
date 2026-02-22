@@ -7,7 +7,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.util.concurrent.TimeUnit
 
-object RequestSingleton {
+object Request {
     private val client = OkHttpClient().newBuilder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
@@ -33,5 +33,11 @@ object RequestSingleton {
         } catch (_: Exception) {
             null
         }
+    }
+
+    fun changeUserAgent(agent: String) {
+        headers.newBuilder().removeAll("User-Agent")
+            .add("User-Agent", agent)
+            .build()
     }
 }
