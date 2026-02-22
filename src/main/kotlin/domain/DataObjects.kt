@@ -14,13 +14,13 @@ data class StoryEntry(
     val chaptersCount: Int,
     val kudosCount: Int,
     val commentCount: Int,
-    val category: List<Category>,
+    val hitCount: Long,
+    val categories: List<Category>,
+    val warning: List<Warning>,
     val complete: Boolean,
-    val warning: Warning
 )
 
 data class Tag(
-    val id: Long,
     val type: TagType,
     val name: String,
     val link: Link
@@ -30,8 +30,13 @@ data class Author(val name: String, val link: Link)
 
 data class ResponseObject(val type: ResponseEnum, val document: Document)
 
-data class Link(val link: String) {
-    fun toURL(): String {
-        return URLHelper.AO3_SITE_MAIN + link
+data class Link(val link: String, val paramsExist: Boolean) {
+    fun toURL(page: Int = 1): String {
+        val postFix = if (paramsExist) {
+            "&page=$page"
+        } else {
+            "?page=$page"
+        }
+        return URLHelper.AO3_SITE_MAIN + link + postFix
     }
 }

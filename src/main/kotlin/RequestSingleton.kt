@@ -7,7 +7,7 @@ import org.jsoup.Jsoup
 import org.jsoup.nodes.Document
 import java.util.concurrent.TimeUnit
 
-class RequestSingleton {
+object RequestSingleton {
     private val client = OkHttpClient().newBuilder()
         .connectTimeout(30, TimeUnit.SECONDS)
         .readTimeout(60, TimeUnit.SECONDS)
