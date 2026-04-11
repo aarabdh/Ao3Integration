@@ -1,10 +1,10 @@
 import aarabdh.ao3integration.domain.*
-import aarabdh.ao3integration.util.parsePageForStoryEntries
-import aarabdh.ao3integration.util.parseStoryEntry
+import aarabdh.ao3integration.parse.parsePageForStoryEntries
+import aarabdh.ao3integration.parse.parseStoryEntry
 import org.jsoup.Jsoup
 import kotlin.test.Test
 
-class HTMLParserTest {
+class StoryListPageParserTest {
 
     @Test fun `fanfic entry gets parsed correctly`() {
         val testHtml = Jsoup.parse(workEntry)

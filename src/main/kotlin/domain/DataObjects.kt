@@ -2,6 +2,7 @@ package aarabdh.ao3integration.domain
 
 import aarabdh.ao3integration.util.URLHelper
 import org.jsoup.nodes.Document
+import java.util.Date
 
 data class StoryEntry(
     val id: Long,
@@ -19,6 +20,24 @@ data class StoryEntry(
     val warning: List<Warning>,
     val complete: Boolean,
 )
+
+data class Chapter(
+    val id: Long,
+    val title: String,
+    val number: Int,
+    val link: String,
+    val publicationDate: Date,
+    val coCreatorsList: List<Creator>,
+    val summary: String?,
+    val notesAtStart: String?,
+    val notesAtEnd: String?,
+    val rawHtml: String,
+    val transformedText: String
+)
+
+class ChapterList(list: List<String>): ArrayList<String>(list), List<String>
+
+data class Creator(val name: String, val link: String)
 
 data class Tag(
     val type: TagType,

@@ -1,0 +1,676 @@
+import aarabdh.ao3integration.parse.parseChapterPage
+import org.jsoup.Jsoup
+import kotlin.test.Test
+
+class ChapterPageParserTest {
+
+    @Test fun `chapter page is parsed correctly`() {
+        val testHtml = Jsoup.parse(chapter2)
+        val response = parseChapterPage(testHtml, 1L)
+        assert(response.transformedText == "Again, it is only for testing :)")
+        assert(response.rawHtml == "<p>Again, it is only for testing :)</p>")
+        assert(response.notesAtEnd == "Chapter 2 note at the end")
+        assert(response.notesAtStart == "Chapter 2 note at the beginning")
+        assert(response.summary == "Chapter 2 Summary")
+        assert(response.link == "/works/82901461/chapters/218281751")
+        assert(response.title == "New Chapter Title")
+        assert(response.number == 2)
+    }
+
+    private val chapter2 = $$"""
+    <html lang="en"><head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="keywords" content="fanfiction, transformative works, otw, fair use, archive">
+    <meta name="language" content="en-US">
+    <meta name="subject" content="fandom">
+    <meta name="description" content="An Archive of Our Own, a project of the Organization for Transformative Works">
+    <meta name="distribution" content="GLOBAL">
+    <meta name="classification" content="transformative works">
+    <meta name="author" content="Organization for Transformative Works">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="chrome" content="nointentdetection">
+    <meta name="format-detection" content="telephone=no">
+    <title>Test Story to create an API - Chapter 2 - AarabdhT - Harry Potter - J. K. Rowling [Archive of Our Own]</title>
+
+    <link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_1_default/1_site_screen_.css">
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 62em), handheld" href="/stylesheets/skins/skin_1_default/4_site_midsize.handheld_.css">
+<link rel="stylesheet" type="text/css" media="only screen and (max-width: 42em), handheld" href="/stylesheets/skins/skin_1_default/5_site_narrow.handheld_.css">
+<link rel="stylesheet" type="text/css" media="speech" href="/stylesheets/skins/skin_1_default/6_site_speech_.css">
+<link rel="stylesheet" type="text/css" media="print" href="/stylesheets/skins/skin_1_default/7_site_print_.css">
+<!--[if IE 8]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_1_default/8_site_screen_IE8_or_lower.css" /><![endif]-->
+<!--[if IE 5]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_1_default/9_site_screen_IE5.css" /><![endif]-->
+<!--[if IE 6]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_1_default/10_site_screen_IE6.css" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" media="screen" href="/stylesheets/skins/skin_1_default/11_site_screen_IE7.css" /><![endif]-->
+
+
+<!--sandbox for developers	-->
+<link rel="stylesheet" href="/stylesheets/sandbox.css">
+
+
+
+<script src="/javascripts/livevalidation_standalone.js"></script>
+
+<meta name="csrf-param" content="authenticity_token">
+<meta name="csrf-token" content="CyeZnc_3Gq48XeQiKNjMRwHFU7Gdcm_tN9sls5ASJL2rbpDTXNQO6wvFUAsozMyfe7LKTeULn-KtsQT8innRAg">
+
+    
+  </head>
+
+  <body class="logged-out javascript" style="zoom: 1;">
+    <div id="outer" class="wrapper">
+      <ul id="skiplinks"><li><a href="#main">Main Content</a></li></ul>
+      <noscript><p id="javascript-warning">While we&#39;ve done our best to make the core functionality of this site accessible without JavaScript, it will work better with it enabled. Please consider turning it on!</p></noscript>
+
+<!-- BEGIN header -->
+
+<header id="header" class="region">
+
+  <h1 class="heading">
+    <a href="/"><span>Archive of Our Own</span><img alt="Archive of Our Own" class="logo" src="/images/ao3_logos/logo_42.png"></a>
+  </h1>
+
+    <div id="login" class="dropdown" aria-haspopup="true">
+      <p class="user actions">
+        <a id="login-dropdown" href="/users/login?return_to=%2Fchapters%2F218281751" class="dropdown-toggle" data-toggle="dropdown" data-target="#">Log In</a>
+      </p>
+      <div id="small_login" class="simple login">
+	<form class="new_user" id="new_user_session_small" action="/users/login?return_to=%2Fchapters%2F218281751" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="CyeZnc_3Gq48XeQiKNjMRwHFU7Gdcm_tN9sls5ASJL2rbpDTXNQO6wvFUAsozMyfe7LKTeULn-KtsQT8innRAg" autocomplete="off">
+  <dl>
+    <dt><label for="user_session_login_small">Username or email:</label></dt>
+    <dd><input autocomplete="on" id="user_session_login_small" type="text" name="user[login]"></dd>
+    <dt><label for="user_session_password_small">Password:</label></dt>
+    <dd><input id="user_session_password_small" type="password" name="user[password]"></dd>
+  </dl>
+  <p class="submit actions">
+    <label for="user_remember_me_small" class="action">
+      <input type="checkbox" name="user[remember_me]" id="user_remember_me_small" value="1">Remember Me
+    </label>
+    <input type="submit" name="commit" value="Log In">
+  </p>
+</form>
+<ul class="footnote actions">
+  <li><a href="/users/password/new">Forgot password?</a></li>
+    <li>
+      <a href="/invite_requests">Get an Invitation</a>
+    </li>
+</ul>
+
+</div>
+
+    </div>
+
+  <nav aria-label="Site">
+    <ul class="primary navigation actions">
+      <li class="dropdown" aria-haspopup="true">
+        <a href="/menu/fandoms" class="dropdown-toggle" data-toggle="dropdown" data-target="#">Fandoms</a>
+        <ul class="menu dropdown-menu">
+  <li><a href="/media">All Fandoms</a></li>
+        <li id="medium_5"><a href="/media/Anime%20*a*%20Manga/fandoms">Anime &amp; Manga</a></li>
+        <li id="medium_3"><a href="/media/Books%20*a*%20Literature/fandoms">Books &amp; Literature</a></li>
+        <li id="medium_4"><a href="/media/Cartoons%20*a*%20Comics%20*a*%20Graphic%20Novels/fandoms">Cartoons &amp; Comics &amp; Graphic Novels</a></li>
+        <li id="medium_7"><a href="/media/Celebrities%20*a*%20Real%20People/fandoms">Celebrities &amp; Real People</a></li>
+        <li id="medium_2"><a href="/media/Movies/fandoms">Movies</a></li>
+        <li id="medium_6"><a href="/media/Music%20*a*%20Bands/fandoms">Music &amp; Bands</a></li>
+        <li id="medium_8"><a href="/media/Other%20Media/fandoms">Other Media</a></li>
+        <li id="medium_30198"><a href="/media/Theater/fandoms">Theater</a></li>
+        <li id="medium_1"><a href="/media/TV%20Shows/fandoms">TV Shows</a></li>
+        <li id="medium_476"><a href="/media/Video%20Games/fandoms">Video Games</a></li>
+        <li id="medium_9971"><a href="/media/Uncategorized%20Fandoms/fandoms">Uncategorized Fandoms</a></li>
+</ul>
+
+      </li>
+      <li class="dropdown" aria-haspopup="true">
+        <a href="/menu/browse" class="dropdown-toggle" data-toggle="dropdown" data-target="#">Browse</a>
+        <ul class="menu dropdown-menu">
+  <li><a href="/works">Works</a></li>
+  <li><a href="/bookmarks">Bookmarks</a></li>
+  <li><a href="/tags">Tags</a></li>
+  <li><a href="/collections">Collections</a></li>
+</ul>
+
+      </li>
+      <li class="dropdown" aria-haspopup="true">
+        <a href="/menu/search" class="dropdown-toggle" data-toggle="dropdown" data-target="#">Search</a>
+        <ul class="menu dropdown-menu">
+  <li><a href="/works/search">Works</a></li>
+  <li><a href="/bookmarks/search">Bookmarks</a></li>
+  <li><a href="/tags/search">Tags</a></li>
+  <li><a href="/people/search">People</a></li>
+</ul>
+
+      </li>
+      <li class="dropdown" aria-haspopup="true">
+        <a href="/menu/about" class="dropdown-toggle" data-toggle="dropdown" data-target="#">About</a>
+        <ul class="menu dropdown-menu">
+  <li><a href="/about">About Us</a></li>
+  <li><a href="/admin_posts">News</a></li>
+  <li><a href="/faq">FAQ</a></li>
+  <li><a href="/wrangling_guidelines">Wrangling Guidelines</a></li>
+  <li><a href="/donate">Donate or Volunteer</a></li>
+</ul>
+
+      </li>
+      <li class="search"><form class="search" id="search" role="search" aria-label="Work" action="/works/search" accept-charset="UTF-8" method="get">
+  <fieldset>
+    <p>
+      <label class="landmark" for="site_search">Work Search</label>
+      <input class="text" id="site_search" aria-describedby="site_search_tooltip" type="text" name="work_search[query]">
+      <span class="tip" role="tooltip" id="site_search_tooltip">tip: hetalia f/f sort:kudos</span>
+      <span class="submit actions"><input type="submit" value="Search" class="button"></span>
+    </p>
+  </fieldset>
+</form></li>
+    </ul>
+  </nav>
+
+
+
+  <div class="clear"></div>
+
+</header>
+
+
+
+<!-- END header -->
+
+      <div id="inner" class="wrapper">
+        <!-- BEGIN sidebar -->
+        <!-- END sidebar -->
+
+        <!-- BEGIN main -->
+        <div id="main" class="chapters-show region" role="main">
+          
+          <div class="flash"></div>
+          <!--page description, messages-->
+<!--/descriptions-->
+
+<!--subnav-->
+<!--/subnav-->
+
+<!-- BEGIN revealed -->
+  <!-- BEGIN work -->
+  <div class="work">
+    <p class="landmark"><a name="top">&nbsp;</a></p>
+
+    <!--work description, metadata, notes and messages-->
+    <!-- BEGIN navigation -->
+<h3 class="landmark heading">Actions</h3>
+<ul class="work navigation actions">
+
+
+
+    <li class="chapter entire"><a href="/works/82901461?view_full_work=true">Entire Work</a></li>
+
+      <li class="chapter previous"><a href="/works/82901461/chapters/218281551#workskin">← Previous Chapter</a></li>
+
+
+    <li class="chapter"><noscript><a href="/works/82901461/navigate">Chapter Index</a></noscript><button class="collapsed">Chapter Index</button>
+      <ul id="chapter_index" class="expandable secondary hidden">
+        <li>
+          <form action="/works/82901461/chapters/218281751" accept-charset="UTF-8" method="get">
+            <p>
+              <select name="selected_id" id="selected_id"><option value="218281551">1. Title for Chapter 1</option>
+<option selected="selected" value="218281751">2. New Chapter Title</option></select>
+              <span class="submit actions"><input type="submit" name="commit" value="Go"></span>
+            </p>
+</form>        </li>
+        <li><a href="/works/82901461/navigate">Full-Page Index</a></li>
+      </ul>
+    </li>
+
+
+
+  <li class="comments" id="show_comments_link_top">
+      <a href="#comments">Comments</a>
+  </li>
+
+
+
+    <li class="share">
+      <a class="modal modal-attached" title="Share Work" href="/works/82901461/share" aria-controls="modal">Share</a>
+    </li>
+
+
+    <li class="download"><noscript><h4 class="heading">Download</h4></noscript><button class="collapsed">Download</button>
+      <ul class="expandable secondary hidden">
+          <li><a href="/downloads/82901461/Test_Story_to_create_an.azw3?updated_at=1775896623">AZW3</a></li>
+          <li><a href="/downloads/82901461/Test_Story_to_create_an.epub?updated_at=1775896623">EPUB</a></li>
+          <li><a href="/downloads/82901461/Test_Story_to_create_an.mobi?updated_at=1775896623">MOBI</a></li>
+          <li><a href="/downloads/82901461/Test_Story_to_create_an.pdf?updated_at=1775896623">PDF</a></li>
+          <li><a href="/downloads/82901461/Test_Story_to_create_an.html?updated_at=1775896623">HTML</a></li>
+      </ul>
+    </li>
+</ul>
+<!-- END navigation -->
+
+
+    <h3 class="landmark heading">Work Header</h3>
+
+<div class="wrapper">
+
+  <dl class="work meta group">
+          <dt class="rating tags">
+
+              Rating:
+          </dt>
+
+          <dd class="rating tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/General%20Audiences/works">General Audiences</a></li>
+            </ul>
+          </dd>
+          <dt class="warning tags">
+
+              <a href="/tos_faq#tags">Archive Warning</a>:
+          </dt>
+
+          <dd class="warning tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Choose%20Not%20To%20Use%20Archive%20Warnings/works">Creator Chose Not To Use Archive Warnings</a></li>
+            </ul>
+          </dd>
+          <dt class="category tags">
+
+              Categories:
+          </dt>
+
+          <dd class="category tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Multi/works">Multi</a></li><li><a class="tag" href="/tags/Other/works">Other</a></li>
+            </ul>
+          </dd>
+          <dt class="fandom tags">
+
+              Fandom:
+          </dt>
+
+          <dd class="fandom tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Harry%20Potter%20-%20J*d*%20K*d*%20Rowling/works">Harry Potter - J. K. Rowling</a></li>
+            </ul>
+          </dd>
+          <dt class="character tags">
+
+              Character:
+          </dt>
+
+          <dd class="character tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Luna%20Lovegood/works">Luna Lovegood</a></li>
+            </ul>
+          </dd>
+          <dt class="freeform tags">
+
+              Additional Tags:
+          </dt>
+
+          <dd class="freeform tags">
+            <ul class="commas">
+               <li><a class="tag" href="/tags/Tags%20May%20Change/works">Tags May Change</a></li><li><a class="tag" href="/tags/Random%20*a*%20Short/works">Random &amp; Short</a></li>
+            </ul>
+          </dd>
+
+      <dt class="language">
+        Language:
+      </dt>
+      <dd class="language" lang="en">
+        English
+      </dd>
+
+
+
+    <dt class="stats">Stats:</dt>
+    <dd class="stats">
+<!-- end of cache -->
+
+      <dl class="stats"><dt class="published">Published:</dt><dd class="published">2026-04-11</dd><dt class="status">Completed:</dt><dd class="status">2026-04-11</dd><dt class="words">Words:</dt><dd class="words">41</dd><dt class="chapters">Chapters:</dt><dd class="chapters">2/2</dd><dt class="hits">Hits:</dt><dd class="hits">6</dd></dl>
+      </dd>
+  </dl>
+</div>
+
+
+    
+
+    <!-- BEGIN section where work skin applies -->
+    <div id="workskin">
+      <div class="preface group">
+  <h2 class="title heading">
+    Test Story to create an API
+  </h2>
+  <h3 class="byline heading">
+    <a rel="author" href="/users/AarabdhT/pseuds/AarabdhT">AarabdhT</a>
+  </h3>
+
+</div>
+
+    <!--/descriptions-->
+
+      <div id="chapters">
+        <!-- This partial requires local variable 'chapter' -->
+<div class="chapter" id="chapter-2">
+  <!-- chapter management -->
+
+
+  <div class="chapter preface group">
+    <h3 class="title">
+      <a href="/works/82901461/chapters/218281751">Chapter 2</a>: New Chapter Title
+    </h3>
+
+    <!-- only display byline if different from the main byline -->
+
+        <div id="summary" class="summary module">
+          <h3 class="heading">Summary:</h3>
+          <blockquote class="userstuff">
+            <p>Chapter 2 Summary</p>
+          </blockquote>
+        </div>
+
+      <div id="notes" class="notes module">
+        <h3 class="heading">Notes:</h3>
+          <blockquote class="userstuff"><p>Chapter 2 note at the beginning</p></blockquote>
+            <p>
+            (See the end of the chapter for  <a href="#chapter_2_endnotes">more notes</a>.)
+            </p>
+      </div>
+  </div>
+
+  <!--main content-->
+  <div class="userstuff module" role="article">
+    <h3 class="landmark heading" id="work">Chapter Text</h3>
+    <p>Again, it is only for testing :)</p>
+  </div>
+  <!--/main-->
+
+    <div class="chapter preface group">
+      <div class="end notes module" id="chapter_2_endnotes">
+        <h3 class="heading">Notes:</h3>
+        <blockquote class="userstuff">
+          <p>Chapter 2 note at the end</p>
+        </blockquote>
+      </div>
+    </div>
+
+</div>
+
+<!-- end of cache -->
+
+      </div>
+
+        <!--afterword-->
+        <div class="afterword preface group">
+            <!--work endnotes-->
+<div id="work_endnotes" class="end notes module">
+  <h3 class="heading">Notes:</h3>
+  <blockquote class="userstuff"><p>Notes at end</p></blockquote>
+</div>
+<!--/work endnotes-->
+        </div>
+        <!--/afterword-->
+
+    </div>
+    <!-- END work skin -->
+  </div>
+  <!-- END work -->
+
+  <!-- BEGIN comment section -->
+  <!-- Gets embedded anywhere we need to list comments on a top-level commentable. We need the local variable "commentable" here. -->
+<div id="feedback" class="feedback">
+
+  <h3 class="landmark heading">Actions</h3>
+
+  <ul class="actions">
+      <li><a href="#main">↑ Top</a></li>
+
+      <li>
+        <a href="/works/82901461/chapters/218281551#workskin">← Previous Chapter</a>
+      </li>
+
+
+
+
+
+      <li>
+        <form id="new_kudo" action="/kudos" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="CyeZnc_3Gq48XeQiKNjMRwHFU7Gdcm_tN9sls5ASJL2rbpDTXNQO6wvFUAsozMyfe7LKTeULn-KtsQT8innRAg" autocomplete="off">
+          <input autocomplete="off" value="82901461" type="hidden" name="kudo[commentable_id]" id="kudo_commentable_id">
+          <input autocomplete="off" value="Work" type="hidden" name="kudo[commentable_type]" id="kudo_commentable_type">
+          <input type="submit" name="commit" value="Kudos ♥" id="kudo_submit">
+</form>      </li>
+
+
+
+
+  </ul>
+
+
+  <div id="kudos_message"></div>
+  
+
+    <h3 class="landmark heading">Kudos</h3>
+<div id="kudos">
+</div>
+
+
+
+  <h3 class="landmark heading"><a id="comments">Comments</a></h3>
+  
+
+    <div id="add_comment_placeholder" title="top level comment">
+      <div id="add_comment">
+        <!-- expects the local variables comment, commentable, and button_name -->
+<div class="post comment" id="comment_form_for_218281751">
+  <form class="new_comment" id="comment_for_218281751" action="/chapters/218281751/comments" accept-charset="UTF-8" method="post"><input type="hidden" name="authenticity_token" value="CyeZnc_3Gq48XeQiKNjMRwHFU7Gdcm_tN9sls5ASJL2rbpDTXNQO6wvFUAsozMyfe7LKTeULn-KtsQT8innRAg" autocomplete="off">
+    <fieldset>
+      <legend>Post Comment</legend>
+
+
+
+
+
+
+
+        <dl>
+          <dt class="landmark">Note:</dt>
+          <dd class="instructions comment_form">All fields are required. Your email address will not be published.</dd>
+          <dt><label for="comment_name_for_218281751">Guest name</label></dt>
+          <dd>
+            <input id="comment_name_for_218281751" type="text" name="comment[name]"><span role="alert" id="comment_name_for_218281751_LV_validation_message" class=" LV_validation_message LV_valid"></span>
+            <script>
+//<![CDATA[
+var validation_for_comment_name_for_218281751 = new LiveValidation('comment_name_for_218281751', { wait: 500, onlyOnBlur: false });
+validation_for_comment_name_for_218281751.add(Validate.Presence, {"failureMessage":"Please enter your name.","validMessage":""});
+//]]>
+</script>
+          </dd>
+          <dt><label for="comment_email_for_218281751">Guest email</label></dt>
+          <dd>
+            <input id="comment_email_for_218281751" type="text" name="comment[email]"><span role="alert" id="comment_email_for_218281751_LV_validation_message" class=" LV_validation_message LV_valid"></span>
+            <script>
+//<![CDATA[
+var validation_for_comment_email_for_218281751 = new LiveValidation('comment_email_for_218281751', { wait: 500, onlyOnBlur: false });
+validation_for_comment_email_for_218281751.add(Validate.Presence, {"failureMessage":"Please enter your email address.","validMessage":""});
+//]]>
+</script>
+          </dd>
+        </dl>
+        <p class="footnote">Plain text with limited HTML  <a class="help symbol question modal modal-attached" aria-label="Html help" href="/help/html-help.html" aria-controls="modal"><span class="symbol question"><span>?</span></span></a> Embedded images (&lt;img&gt; tags) will be displayed as HTML, including the image's source link and any alt text.</p>
+
+      <p>
+        <label for="comment_content_for_218281751" class="landmark">Comment</label>
+        <textarea id="comment_content_for_218281751" class="comment_form observe_textlength" title="Enter Comment" name="comment[comment_content]"></textarea><span role="alert" id="comment_content_for_218281751_LV_validation_message" class=" LV_validation_message LV_valid"></span>
+        <input type="hidden" id="controller_name_for_218281751" name="controller_name" value="chapters">
+      </p>
+      <p class="character_counter" tabindex="0"><span id="comment_content_for_218281751_counter" class="value" data-maxlength="10000" aria-valuenow="10000">10000</span> characters left</p>
+      <script>
+//<![CDATA[
+var validation_for_comment_content_for_218281751 = new LiveValidation('comment_content_for_218281751', { wait: 500, onlyOnBlur: false });
+validation_for_comment_content_for_218281751.add(Validate.Presence, {"failureMessage":"Brevity is the soul of wit, but we need your comment to have text in it.","validMessage":""});
+validation_for_comment_content_for_218281751.add(Validate.Length, {"maximum":"10000","tooLongMessage":"must be less than 10000 characters long."});
+//]]>
+</script>
+      <p class="submit actions">
+          <input type="submit" name="commit" value="Comment" id="comment_submit_for_218281751" data-disable-with="Please wait...">
+        </p>
+    </fieldset>
+</form></div>
+<div class="clear"></div>
+
+      </div>
+    </div>
+
+  <!-- If we have javascript, here is where the comments will be spiffily inserted -->
+  <!-- If not, and show_comments is true, here is where the comments will be rendered -->
+  <div id="comments_placeholder" style="display:none;">
+  </div>
+
+
+</div>
+<!-- END comments -->
+
+  <!-- END comment section -->
+
+<!-- END revealed -->
+
+
+
+          <div class="clear"><!--presentational--></div>
+        </div>
+        <!-- END main -->
+      </div>
+      <!-- BEGIN footer -->
+<div id="footer" role="contentinfo" class="region">
+  <h3 class="landmark heading">Footer</h3>
+  <ul class="navigation actions">
+    <li class="module group">
+      <h4 class="heading">About the Archive</h4>
+      <ul class="menu">
+        <li><a href="/site_map">Site Map</a></li>
+        <li><a href="/diversity">Diversity Statement</a></li>
+        <li><a href="/tos">Terms of Service</a></li>
+        <li><a href="/content">Content Policy</a></li>
+        <li><a href="/privacy">Privacy Policy</a></li>
+        <li><a href="/dmca">DMCA Policy</a> </li>
+        <li><a href="https://www.otwstatus.org">Site Status</a></li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Contact Us</h4>
+      <ul class="menu">
+        <li><a href="/abuse_reports/new">Policy Questions &amp; Abuse Reports</a></li>
+        <li><a href="/support">Technical Support &amp; Feedback</a></li>
+      </ul>
+    </li>
+    <li class="module group">
+      <h4 class="heading">Development</h4>
+      <ul class="menu">
+          <li>
+            <a href="https://github.com/otwcode/otwarchive/commits/v0.9.471.1">otwarchive v0.9.471.1</a>
+          </li>
+        <li><a href="/known_issues">Known Issues</a></li>
+        <li>
+          <a title="View License" href="https://www.gnu.org/licenses/old-licenses/gpl-2.0.html">GPL-2.0-or-later</a> by the <a title="Organization for Transformative Works" href="https://transformativeworks.org/">OTW</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+<!-- END footer -->
+
+    </div>
+    <!-- check to see if this controller/action allow tinymce before we load the gigantor js; see application_helper -->
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.0/jquery-ui.min.js" type="text/javascript"></script>
+<!-- if user has googleapis blocked for some reason we need a fallback -->
+<script type="text/javascript">
+  if (typeof jQuery == 'undefined') {
+    document.write(unescape("%3Cscript src='/javascripts/jquery.min.js' type='text/javascript'%3E%3C/script%3E"));
+    document.write(unescape("%3Cscript src='/javascripts/jquery-ui.min.js' type='text/javascript'%3E%3C/script%3E"));
+  }
+</script>
+
+
+<script type="text/javascript">$j = jQuery.noConflict();</script>
+<script src="/javascripts/jquery.scrollTo.min.js"></script>
+<script src="/javascripts/jquery.livequery.min.js"></script>
+<script src="/javascripts/rails.js"></script>
+<script src="/javascripts/application.js"></script>
+<script src="/javascripts/bootstrap/bootstrap-dropdown.min.js"></script>
+<script src="/javascripts/jquery-shuffle.js"></script>
+<script src="/javascripts/jquery.tokeninput.min.js"></script>
+<script src="/javascripts/jquery.trap.min.js"></script>
+<script src="/javascripts/ao3modal.min.js"></script>
+<script src="/javascripts/js.cookie.min.js"></script>
+
+<script src="/javascripts/filters.min.js"></script>
+
+
+  <script>
+//<![CDATA[
+
+    // We can't rely on !window.localStorage to test localStorage support in
+    // browsers like Safari 9, which technically support it, but which have a
+    // storage length of 0 in private mode.
+    // Credit: https://github.com/getgrav/grav-plugin-admin/commit/cfe2188f10c4ca604e03c96f3e21537fda1cdf9a
+    function isSupported() {
+        var item = "localStoragePolyfill";
+        try {
+            localStorage.setItem(item, item);
+            localStorage.removeItem(item);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    }
+
+    function acceptTOS() {
+      if (isSupported()) {
+        localStorage.setItem("accepted_tos", "20241119");
+      } else {
+        Cookies.set("accepted_tos", "20241119", { expires: 365 });
+      }
+    }
+
+    $j(document).ready(function() {
+        if (localStorage.getItem("accepted_tos") !== "20241119" && Cookies.get("accepted_tos") !== "20241119") {
+          $j("body").prepend("<div id=\"tos_prompt\" class=\"hidden\">\n  <h2 class=\"heading\">\n    <span>Archive of Our Own<\/span>\n  <\/h2>\n  <div class=\"agreement\">\n    <p>\n      On the Archive of Our Own (AO3), users can create works, bookmarks, comments, tags, and other <a href=\"/tos_faq#define_content\">Content<\/a>. Any information you publish on AO3 may be accessible by the public, AO3 users, and/or AO3 personnel. Be mindful when sharing personal information, including but not limited to your name, email, age, location, personal relationships, gender or sexual identity, racial or ethnic background, religious or political views, and/or account usernames for other sites.\n    <\/p>\n    <p>\n      To learn more, check out our <a href=\"/tos\">Terms of Service<\/a>, including the <a href=\"/content\">Content Policy<\/a> and <a href=\"/privacy\">Privacy Policy<\/a>.\n    <\/p>\n\n    <p class=\"confirmation\">\n      <input type=\"checkbox\" id=\"tos_agree\" />\n      <label for=\"tos_agree\">I have read &amp; understood the 2024 Terms of Service, including the Content Policy and Privacy Policy.<\/label>\n    <\/p>\n\n    <p class=\"confirmation\">\n      <input type=\"checkbox\" id=\"data_processing_agree\" />\n      <label for=\"data_processing_agree\">By checking this box, you consent to the processing of your personal data in the United States and other jurisdictions in connection with our provision of AO3 and its related services to you. You acknowledge that the data privacy laws of such jurisdictions may differ from those provided in your jurisdiction. For more information about how your personal data will be processed, please refer to our Privacy Policy.<\/label>\n    <\/p>\n\n      <p class=\"submit\">\n        <button name=\"button\" type=\"button\" disabled=\"disabled\" id=\"accept_tos\">I agree/consent to these Terms<\/button>\n      <\/p>\n\n  <\/div>\n<\/div>\n\n<script>\n//<![CDATA[\n\n  \$j(document).ready(function() {\n    var body = document.body;\n    var container = \$j(\"#tos_prompt\");\n    var outer = document.getElementById(\"outer\");\n    var button = document.getElementById(\"accept_tos\");\n    var tosCheckbox = document.getElementById(\"tos_agree\");\n    var dataProcessingCheckbox = document.getElementById(\"data_processing_agree\");\n\n    dataProcessingCheckbox.onclick = checkboxClicked;\n    tosCheckbox.onclick = checkboxClicked;\n    button.onclick = acceptTOSPrompt;\n\n    setTimeout(showTOSPrompt, 1500);\n\n    function showTOSPrompt() {\n      body.style.overflow = \"hidden\";\n      \$j.when(container.fadeIn(500)).done(function() {\n        outer.style.visibility = \"hidden\";\n        outer.setAttribute(\"aria-hidden\", \"true\");\n      });\n    }\n\n    function checkboxClicked() {\n      button.disabled = !tosCheckbox.checked || !dataProcessingCheckbox.checked;\n    }\n\n    function acceptTOSPrompt() {\n      acceptTOS();\n      body.style.overflow = \"\";\n      outer.removeAttribute(\"style\");\n      outer.removeAttribute(\"aria-hidden\");\n      \$j.when(container.fadeOut(500)).done(function() {\n        container.remove();\n      });\n    }\n  });\n\n//]]]]><![CDATA[>\n<\/script>");
+        }
+    });
+
+//]]>
+</script>
+  <script>
+//<![CDATA[
+
+    $j(document).ready(function() {
+      var permitted_hosts = ["104.153.64.122","208.85.241.152","208.85.241.157","ao3.org","archiveofourown.com","archiveofourown.gay","archiveofourown.net","archiveofourown.org","download.archiveofourown.org","insecure.archiveofourown.org","secure.archiveofourown.org","www.archiveofourown.com","www.archiveofourown.net","www.archiveofourown.org","www.ao3.org","archive.transformativeworks.org"];
+      var current_host = window.location.hostname;
+
+      if (!permitted_hosts.includes(current_host) && Cookies.get("proxy_notice") !== "0" && window.location.protocol !== "file:") {
+        $j("#skiplinks").after("<div id=\"proxy-notice\">\n  <div class=\"userstuff\">\n    <p class=\"important\">Important message:<\/p>\n    <ol>\n      <li>You are using a proxy site that is not part of the Archive of Our Own.<\/li>\n      <li>The entity that set up the proxy site can see what you submit, including your IP address. If you log in through the proxy site, it can see your password.<\/li>\n    <\/ol>\n    <p class=\"important\">Важная информация:<\/p>\n    <ol>\n      <li>Вы используете прокси-сайт, который не является частью AO3 (Нашего Архива).<\/li>\n      <li>Субъект, настроивший прокси-сайт, может видеть, что вы отправляете, включая ваш IP-адрес. Если вы авторизуетесь через прокси-сайт, он может видеть ваш пароль.<\/li>\n    <\/ol>\n    <p class=\"important\">Важливе повідомлення:<\/p>\n    <ol>\n      <li>Ви використовуєте проксі-сайт, який не є частиною Archive of Our Own (Нашого Власного Архіву).<\/li>\n      <li>Творці цього проксі-сайту можуть бачити Ваші дані та дії, а також Вашу IP-адресу. Якщо Ви входите до свого облікового запису, використовуючи проксі-сайт, його творці можуть бачити Ваш пароль.<\/li>\n    <\/ol>\n    <p class=\"important\">重要提示：<\/p>\n    <ol>\n      <li>您使用的是第三方开发的反向代理网站，此网站并非Archive of Our Own - AO3（AO3作品库）原站。<\/li>\n      <li>代理网站的开发者能够获取您上传至该站点的全部内容，包括您的ip地址。如您通过代理登录AO3，对方将获得您的密码。<\/li>\n    <\/ol>\n    <p class=\"submit\"><button class=\"action\" type=\"button\" id=\"proxy-notice-dismiss\">Dismiss Notice<\/button><\/p>\n  <\/div>\n<\/div>\n\n<script>\n//<![CDATA[\n\n  \$j(document).ready(function() {\n    \$j(\"#proxy-notice-dismiss\").on(\"click\", function() {\n      Cookies.set(\"proxy_notice\", \"0\");\n      \$j(\"#proxy-notice\").slideUp();\n    });\n  });\n\n//]]]]><![CDATA[>\n<\/script>");
+      }
+    });
+
+//]]>
+</script>
+    <script>
+      $j(document).on("loadedCSRF", function() {
+        function send() {
+          $j.post("/works/82901461/hit_count.json")
+        }
+
+        // If a browser doesn't support prerendering, then document.prerendering
+        // will be undefined, and we'll just send the hit count immediately.
+        if (document.prerendering) {
+          document.addEventListener("prerenderingchange", send);
+        } else {
+          send();
+        }
+      })
+    </script>
+
+
+  
+
+<div id="modal-bg" class="modal-closer"><div class="loading"></div></div><div id="modal-wrap" class="modal-closer"><div id="modal"><div class="content userstuff"></div><div class="footer"><span class="title"></span><a class="action modal-closer" href="#">Close</a></div></div></div></body></html>
+    """.trimMargin()
+}

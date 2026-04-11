@@ -1,4 +1,4 @@
-package aarabdh.ao3integration.util
+package aarabdh.ao3integration.parse
 
 import aarabdh.ao3integration.domain.Category
 import aarabdh.ao3integration.domain.Link
