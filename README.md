@@ -6,7 +6,6 @@ It provides an easily integrable API for anyone to create an app for AO3.
 #### It is not yet production ready, contributions are welcome.
 
 ## Planned Features:
-* API to get chapter-wise textual content.
 * Implementing robust searching, filtering and sorting of entries based on user preferences.
 * Implementing author-specific entry search and filtering.
 
