@@ -11,6 +11,7 @@ object URLHelper {
         return AO3_SITE_MAIN + SEARCH_KEYWORDS.replace("{SEARCH_QUERY}", sanitizedSearch).replace("{PAGE_NUMBER}", page.toString())
     }
 
+    @JvmStatic
     fun getTagWorksUrl(tag: String, page: Int = 1): String {
         return "$AO3_SITE_MAIN/tags/$tag/works?page=$page"
     }
