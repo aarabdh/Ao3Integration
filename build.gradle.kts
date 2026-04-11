@@ -24,3 +24,7 @@ kotlin {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.register("jarWithSources") {
+    dependsOn("jar", "kotlinSourcesJar")
+}

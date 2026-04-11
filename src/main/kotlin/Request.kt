@@ -25,12 +25,15 @@ object Request {
         val request = Request.Builder().url(url).headers(headers).get().build()
         return try {
             client.newCall(request).execute().use { response ->
-                if (!response.isSuccessful) return null
+                if (!response.isSuccessful) {
+                    return null
+                }
 
                 val bodyStream = response.body?.byteStream() ?: return null
                 Jsoup.parse(bodyStream, null, url)
             }
-        } catch (_: Exception) {
+        } catch (e: Exception) {
+            e.printStackTrace()
             null
         }
     }

@@ -23,6 +23,6 @@ object URLHelper {
 
     @JvmStatic
     fun chapterFromId(chapterId: Long): String {
-        return "$AO3_SITE_MAIN/chapters/$chapterId"
+        return "$AO3_SITE_MAIN/chapters/$chapterId?view_adult=true"
     }
 }
