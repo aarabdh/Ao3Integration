@@ -2,24 +2,15 @@ package aarabdh.ao3integration.parse
 
 import aarabdh.ao3integration.domain.Chapter
 import aarabdh.ao3integration.domain.Creator
+import aarabdh.ao3integration.util.*
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import java.text.SimpleDateFormat
 import java.util.Date
 
-private const val CSS_END_NOTES = "div.chapter.preface.group > div.end.notes.module > blockquote.userstuff"
-private const val CSS_START_NOTES = "div.chapter.preface.group > div#notes.notes.module > blockquote.userstuff"
-private const val CSS_TITLE = "div.chapter.preface.group > h3.title"
-private const val CSS_CHAPTER = "div.chapter[id^=chapter-]"
-private const val CSS_SUMMARY = "div.chapter.preface.group > div#summary.summary.module > blockquote.userstuff"
-private const val CSS_BODY = "div.userstuff.module[role=article]"
-private const val CSS_COCREATOR = "div.chapter.preface.group > h3.byline"
-private const val CSS_PUBLISH_DATE = "dl.stats > dd.published"
-private const val CSS_HEADING = "h3.landmark.heading#work"
-
 fun parseChapterPage(doc: Document, chapterId: Long): Chapter {
     val dateString = doc.selectFirst(CSS_PUBLISH_DATE)!!.text()
-    val publicationDate: Date = SimpleDateFormat("yyyy-MM-dd").parse(dateString)
+    val publicationDate: Date = SimpleDateFormat(DATE_FORMAT).parse(dateString)
 
     val chapterEl: Element = doc.selectFirst(CSS_CHAPTER)!!
 

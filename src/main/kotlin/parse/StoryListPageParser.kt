@@ -7,53 +7,54 @@ import aarabdh.ao3integration.domain.StoryEntry
 import aarabdh.ao3integration.domain.Tag
 import aarabdh.ao3integration.domain.TagType
 import aarabdh.ao3integration.domain.Warning
+import aarabdh.ao3integration.util.*
 import org.jsoup.nodes.Document
 import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
 fun parsePageForStoryEntries(doc: Document): List<StoryEntry> {
-    return doc.body().select("ol.work.index.group > li").map {
+    return doc.body().select(CSS_STORY_ENTRIES).map {
         parseStoryEntry(it)
     }
 }
 
 fun parseStoryEntry(workElement: Element): StoryEntry {
-    val titleAnchor = workElement.selectFirst("h4.heading > a")
+    val titleAnchor = workElement.selectFirst(CSS_STORY_LIST_TITLE)
         ?: error("Title not found")
 
     val title = titleAnchor.text()
     val storyLink = Link(titleAnchor.attr("href"), false)
     val id = storyLink.link.split("/").last().trim().toLongOrNull() ?: 0
 
-    val summary = workElement.selectFirst("blockquote.summary")?.text()?.trim()
+    val summary = workElement.selectFirst(CSS_STORY_LIST_SUMMARY)?.text()?.trim()
         ?: ""
 
-    val requiredTags = workElement.select("ul.required-tags span:not(.text)")
+    val requiredTags = workElement.select(CSS_REQUIRED_TAGS)
 
     val rating = Rating.fromValue(requiredTags[0].text())
     val warning = Warning.getWarnings(requiredTags[1].text())
     val categories = Category.getCategories(requiredTags[2].text())
     val complete = isComplete(requiredTags[3].text())
 
-    val language = workElement.selectFirst("dd.language")?.text()?.trim()
+    val language = workElement.selectFirst(CSS_LANGUAGE)?.text()?.trim()
         ?: "Unknown"
 
-    val chaptersText = workElement.selectFirst("dd.chapters")?.text()?.trim()
+    val chaptersText = workElement.selectFirst(CSS_CHAPTER_COUNT)?.text()?.trim()
         ?: "0/0"
 
     val chaptersCount = chaptersText.substringBefore("/").toIntOrNull()
         ?: 0
 
-    val kudosCount = workElement.selectFirst("dd.kudos")?.text()?.replace(",", "")?.toIntOrNull()
+    val kudosCount = workElement.selectFirst(CSS_KUDOS)?.text()?.replace(",", "")?.toIntOrNull()
         ?: 0
 
-    val hitCount = workElement.selectFirst("dd.hits")?.text()?.replace(",", "")?.toLongOrNull()
+    val hitCount = workElement.selectFirst(CSS_HITS)?.text()?.replace(",", "")?.toLongOrNull()
         ?: 0
 
-    val commentCount = workElement.selectFirst("dd.comments")?.text()?.replace(",", "")?.toIntOrNull()
+    val commentCount = workElement.selectFirst(CSS_COMMENTS)?.text()?.replace(",", "")?.toIntOrNull()
         ?: 0
 
-    val tags = parseTags(workElement.select("ul.tags.commas"))
+    val tags = parseTags(workElement.select(CSS_TAGS))
 
     return StoryEntry(
         id = id,
