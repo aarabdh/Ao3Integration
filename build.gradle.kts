@@ -26,5 +26,6 @@ tasks.test {
 }
 
 tasks.register("jarWithSources") {
+    description = "Building a Fat Jar"
     dependsOn("jar", "kotlinSourcesJar")
 }
