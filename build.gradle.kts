@@ -5,7 +5,7 @@ plugins {
 }
 
 group = "aarabdh.ao3integration"
-version = "0.1.0"
+version = project.findProperty("version") ?: "0.1.0"
 
 repositories {
     mavenCentral()

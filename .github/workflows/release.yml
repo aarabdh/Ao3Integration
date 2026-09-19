@@ -1,0 +1,45 @@
+name: release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g. 1.0.0)'
+        required: true
+        type: string
+
+jobs:
+  release:
+    environment: release
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'corretto'
+          cache: gradle
+
+      - name: Run JUnit tests
+        run: ./gradlew test
+
+      - name: Build JAR
+        run: ./gradlew jar
+
+      - name: Build fat JAR with sources
+        run: ./gradlew jarWithSources
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v${{ inputs.version }}
+          name: v${{ inputs.version }}
+          files: build/libs/*.jar
+          generate_release_notes: true
